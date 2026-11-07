@@ -1,0 +1,14 @@
+{
+  "description": "Node wrapper for xray VLESS, for lightcloud free tier. Edge terminates TLS.",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "server.js",
+  "name": "xray-lightcloud-node",
+  "private": true,
+  "scripts": {
+    "setup": "node setup.js",
+    "start": "node server.js"
+  },
+  "version": "1.0.0"
+}
