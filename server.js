@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
   }
   // XHTTP: forward plain HTTP requests on the path to xray (packet-up mode).
   // WS: GET without Upgrade returns 400, like xray itself.
-  if (req.url === '/' + WSPATH || req.url.startsWith('/' + WSPATH + '?')) {
+  if (req.url === '/' + WSPATH || req.url.startsWith('/' + WSPATH + '/') || req.url.startsWith('/' + WSPATH + '?')) {
     if (process.env.TRANSPORT === 'xhttp') {
       const proxy = http.request({ host: '127.0.0.1', port: XRAY_PORT, path: req.url, method: req.method, headers: req.headers }, (up) => { res.writeHead(up.statusCode, up.headers); up.pipe(res); });
       proxy.on('error', () => { res.writeHead(502); res.end(); });
